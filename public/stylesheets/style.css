@@ -11,6 +11,23 @@ a {
   color: #00B7FF;
 }
 
+a.h2 {
+  color:inherit;
+}
+
+a.new {
+  float: right;
+  border-top-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  border-bottom-left-radius: none;
+  border-top-right-radius: none;
+  padding: 15px;
+  font-size: 18px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+}
+
 h1 {
   text-align: right;
   padding-top: 50px;
@@ -80,3 +97,31 @@ textarea {
 .add {
   padding-left: 130px;
 }
+
+.article {
+  background-color: white;
+}
+
+.articleDisplay {
+  background-color: white;
+}
+
+#delete {
+  background-color: inherit;
+  border: none;
+}
+
+button.delete {
+  background-color: red;
+}
+
+h2.index {
+  /*background-image: url(article.url);*/
+  background-image: url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');
+
+}
+
+/*.image {
+  background-image: url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');
+
+}*/

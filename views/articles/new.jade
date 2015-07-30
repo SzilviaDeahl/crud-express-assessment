@@ -1,10 +1,14 @@
-extends layout
+extends ../layout
 
 block content
   div(class='header')
     h1 The Zine
   div(id='new')
-  form(action='/show' method='post')
+  if errors   
+    for err in errors
+      p.err
+        = err
+  form(action='/articles' method='post')
     fieldset
       h2 New Article
       div(class='title')
@@ -28,3 +32,4 @@ block content
         textarea(id='body' type='text' name='body')
       div(class='add')
         button(type='submit' name='submit') Add Article
+    
