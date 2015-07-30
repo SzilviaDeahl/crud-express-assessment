@@ -24,8 +24,9 @@ router.post('/articles', function (req, res, next) {
   var excerpt = req.body.excerpt;
   var body = req.body.body;
   var errors = validator.inputValidator(title, excerpt);
+  console.log(excerpt);
   if (errors.length != 0){
-    res.render('articles/index', {errors:errors})
+    res.render('articles/new', {errors:errors})
   } else {
       articles.insert({
         title: title,

@@ -4,12 +4,13 @@ block content
   div(class='header')
     h1 The Zine
   div(id='new')
-  if errors   
-    for err in errors
-      p.err
-        = err
   form(action='/articles' method='post')
     fieldset
+      div.errors
+        if errors   
+          for err in errors
+            li.err
+              = err
       h2 New Article
       div(class='title')
         label(for='title') Title 
@@ -17,7 +18,7 @@ block content
       br  
       div(class='url')
         label(for='url') Background URL 
-        input(id='url' type='text' name='url')
+        input(id='url' type='url' name='url')
       br
       div(class='backgroundImage')  
         input(id='checkbox' type='checkbox' name='backgroundUrl')

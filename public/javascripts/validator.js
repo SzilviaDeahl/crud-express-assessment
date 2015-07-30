@@ -2,11 +2,12 @@ module.exports = {
 
   inputValidator: function (title, excerpt) {
     var inputs = [];
-    if (title = ''){
+    if (title === ''){
       inputs.push('Title cannot be blank!')
     } if (excerpt === ''){
-      inputs.push('Excerpt cannot be blank')
+      inputs.push('Excerpt cannot be blank!')
     }
+    console.log(inputs);
     return inputs;
   }
 

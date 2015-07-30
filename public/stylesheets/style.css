@@ -113,14 +113,18 @@ textarea {
 
 button.delete {
   background-color: red;
+  padding: 5px;
+  font-size: 14px;
 }
 
 h2.index {
   /*background-image: url(article.url);*/
-  background-image: url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');
+  /*background-image: url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');*/
 
 }
-
+.errors {
+  color: red;
+}
 /*.image {
   background-image: url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');
 

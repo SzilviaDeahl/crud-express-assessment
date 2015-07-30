@@ -5,9 +5,9 @@ block content
     h1 The Zine
   div(class='article')
     h3= article.title
-    p= article.excerpt
+    p= article.body
   a(href='/articles/' + article._id + '/edit') Edit
   form(id='delete' method='post' action='/articles/' + article._id + '/delete')
     p.delete
-      button(class='delete' type='submit' value="Delete") Delete
+      button.delete(class='delete' type='submit' value="Delete") Delete
       

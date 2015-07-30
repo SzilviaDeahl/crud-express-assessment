@@ -5,16 +5,21 @@ block content
     h1 The Zine
   div(class='articleDisplay')
     each article in articles
-      div.image(style='background-image:url(#{article.url});')
-        h2.index
-          a.h2(href='articles/' + article._id)= article.title
+      if !article.url
+        div.image(style='background-image:url(http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background);')
+          h2.index
+            a.h2(href='articles/' + article._id)= article.title
+      else if article.url && article.background ==='on'
+        div.image(style='background-image:url(#{article.url}); color:white;')
+          h2.index
+            a.h2(href='articles/' + article._id)= article.title
+      else   
+        div.image(style='background-image:url(#{article.url});')
+          h2.index
+            a.h2(href='articles/' + article._id)= article.title
       p= article.excerpt
   p
     a.new(href='articles/new') New Article
 
 
-    //- if article.url!=''
-
-    //- else 
-
-    //-   div.image(style='background-image:url('http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background');')
+    
