@@ -2,7 +2,8 @@ extends ../layout
 
 block content
   div(class='header')
-    h1 The Zine
+    h1 
+      a.zine(href='/') The Zine
   div(class='articleDisplay')
     each article in articles
       if !article.url
@@ -17,7 +18,7 @@ block content
         div.image(style='background-image:url(#{article.url});')
           h2.index
             a.h2(href='articles/' + article._id)= article.title
-      p= article.excerpt
+      p.bod= article.excerpt
   p
     a.new(href='articles/new') New Article
 

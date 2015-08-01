@@ -17,14 +17,12 @@ router.get('/articles/new', function (req, res, next) {
 });
 
 router.post('/articles', function (req, res, next) {
-  console.log(req.body)
   var title = req.body.title;
   var url = req.body.url;
   var background = req.body.backgroundUrl;
   var excerpt = req.body.excerpt;
   var body = req.body.body;
-  var errors = validator.inputValidator(title, excerpt);
-  console.log(excerpt);
+  var errors = validator.inputValidator(title, excerpt, body);
   if (errors.length != 0){
     res.render('articles/new', {errors:errors})
   } else {
@@ -58,14 +56,21 @@ router.post('/articles/:id/update', function (req, res, next) {
   var background = req.body.backgroundUrl;
   var excerpt = req.body.excerpt;
   var body = req.body.body;
-  articles.update({_id: req.params.id}, {
-    title: title,
-    url: url,
-    background: background,
-    excerpt: excerpt,
-    body: body
-  });
-  res.redirect('/')
+  var errors = validator.inputValidator(title, excerpt, body);
+  if (errors.length != 0){
+    articles.findOne({_id: req.params.id}, function (err, record) {
+    res.render('articles/edit', {errors:errors, article: record})
+  })
+  } else {
+      articles.update({_id: req.params.id}, {
+        title: title,
+        url: url,
+        background: background,
+        excerpt: excerpt,
+        body: body
+      })
+      res.redirect('/')
+    }
 });
 
 router.post('/articles/:id/delete', function (req, res, next) {

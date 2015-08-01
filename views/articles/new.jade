@@ -2,22 +2,24 @@ extends ../layout
 
 block content
   div(class='header')
-    h1 The Zine
+    h1 
+      a.zine(href='/') The Zine
   div(id='new')
   form(action='/articles' method='post')
     fieldset
+      h2 New Article
       div.errors
         if errors   
-          for err in errors
-            li.err
-              = err
-      h2 New Article
+          p You messed up! Please fix the following errors! 
+            for err in errors
+              li.err
+                = err
       div(class='title')
-        label(for='title') Title 
+        label(for='title') Title  
         input(id='title' type='text' name='title')
       br  
       div(class='url')
-        label(for='url') Background URL 
+        label(for='url') Background URL  
         input(id='url' type='url' name='url')
       br
       div(class='backgroundImage')  
@@ -25,12 +27,13 @@ block content
         label(class ='check' for='checkbox') Background image has dark colors
       br  
       div(class='excerpt')    
-        label(for='excerpt') Excerpt 
+        label(for='excerpt') Excerpt  
         textarea(id='excerpt' type='text' name='excerpt')
       br  
       div(class='body')  
-        label(for='body') Body   
+        label(for='body') Body    
         textarea(id='body' type='text' name='body')
       div(class='add')
         button(type='submit' name='submit') Add Article
-    
+      p.cancel  
+        a(href='/') Cancel

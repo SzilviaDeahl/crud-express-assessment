@@ -2,12 +2,22 @@ extends ../layout
 
 block content
   div(class='header')
-    h1 The Zine
+    h1
+      a.zine(href='/') The Zine
   div(class='article')
-    h3= article.title
-    p= article.body
-  a(href='/articles/' + article._id + '/edit') Edit
+    if !article.url
+      div.image(style='background-image:url(http://static2.wikia.nocookie.net/fighting-games/images/5/50/Wiki-background);')
+        h2.index= article.title
+          a.edit(href='/articles/' + article._id + '/edit') Edit
+    else if article.url && article.background ==='on'
+      div.image(style='background-image:url(#{article.url}); color:white;') 
+        h2.index= article.title
+          a.edit(href='/articles/' + article._id + '/edit') Edit
+    else   
+      div.image(style='background-image:url(#{article.url});')
+        h2.index= article.title
+          a.edit(href='/articles/' + article._id + '/edit') Edit
+    p.bod= article.body
   form(id='delete' method='post' action='/articles/' + article._id + '/delete')
     p.delete
       button.delete(class='delete' type='submit' value="Delete") Delete
-      
