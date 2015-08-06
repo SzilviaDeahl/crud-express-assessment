@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var db = require('monk')(process.env.MONGOLAB_URI || process.env.LOCAL);
 var articles = db.get('articles');
-var validator = require('../public/javascripts/validator.js');
+// var validator = require('../public/javascripts/validator.js');
 
 
 /* GET home page. */
@@ -13,71 +13,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/articles/new', function (req, res, next) {
-  res.render('articles/new');
+  res.render('new')
 });
 
-router.post('/articles', function (req, res, next) {
-  var title = req.body.title;
-  var url = req.body.url;
-  var background = req.body.backgroundUrl;
-  var excerpt = req.body.excerpt;
-  var body = req.body.body;
-  var errors = validator.inputValidator(title, excerpt, body);
-  if (errors.length != 0){
-    res.render('articles/new', {errors:errors})
-  } else {
-      articles.insert({
-        title: title,
-        url: url,
-        background: background,
-        excerpt: excerpt,
-        body: body
-    }).then(function (article) {
-    res.redirect('/articles/'+ article._id)
-  })
-  }
+router.get('/articles/edit', function (req, res, next) {
+  // users.findOne({_id: })
+  res.render('edit')
 });
 
-router.get('/articles/:id', function (req, res, next) {
-  articles.findOne({_id: req.params.id}, function (err, record) {
-  res.render('articles/show', {article: record})
-  });
+router.get('articles/show', function (req, res, next) {
+  res.render('show')
 });
-
-router.get('/articles/:id/edit', function (req, res, next) {
-  articles.findOne({_id: req.params.id}, function (err, record) {
-    res.render('articles/edit', {article: record})
-  });
-});
-
-router.post('/articles/:id/update', function (req, res, next) {
-  var title = req.body.title;
-  var url = req.body.url;
-  var background = req.body.backgroundUrl;
-  var excerpt = req.body.excerpt;
-  var body = req.body.body;
-  var errors = validator.inputValidator(title, excerpt, body);
-  if (errors.length != 0){
-    articles.findOne({_id: req.params.id}, function (err, record) {
-    res.render('articles/edit', {errors:errors, article: record})
-  })
-  } else {
-      articles.update({_id: req.params.id}, {
-        title: title,
-        url: url,
-        background: background,
-        excerpt: excerpt,
-        body: body
-      })
-      res.redirect('/')
-    }
-});
-
-router.post('/articles/:id/delete', function (req, res, next) {
-  articles.remove({_id: req.params.id});
-  res.redirect('/')
-});
-
 
 
 module.exports = router;
