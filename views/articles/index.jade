@@ -1,6 +1,13 @@
 extends ../layout
 
 block content
-  
-  h1
-    a.zine(href='/') The Zine
+  div.header
+    h1
+      a.zine(href='/') The Zine
+    form(action='/articles' method='POST')  
+      div.new
+        label(for='new') Title
+        input(id='new' type='text' name='title')
+      div.url
+        label(for='url') Background URL 
+        input(id='url' type='url' name='url')
