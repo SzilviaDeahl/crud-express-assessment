@@ -21,6 +21,10 @@ router.get('/articles/edit', function (req, res, next) {
   res.render('edit')
 });
 
+router.post('/articles/:id', function (req, res, next) {
+  res.redirect('/show')
+});
+
 router.get('articles/show', function (req, res, next) {
   res.render('show')
 });
