@@ -4,10 +4,22 @@ block content
   div.header
     h1
       a.zine(href='/') The Zine
-    form(action='/articles' method='POST')  
-      div.new
-        label(for='new') Title
-        input(id='new' type='text' name='title')
-      div.url
-        label(for='url') Background URL 
-        input(id='url' type='url' name='url')
+    div.new
+      form(action='/articles' method='POST')  
+        div.title
+          label(for='new') Title
+          input(id='new' type='text' name='title')
+        div.url
+          label(for='url') Background URL 
+          input(id='url' type='url' name='url')
+        div.backgroundImage
+          input(id='img' type='checkbox' name='img')
+          label(for='img') Background Image Includes Dark Colors
+        div.excerpt
+          label(for='excerpt') Excerpt
+          textarea(id='excerpt' type='text' name='excerpt')
+        div.body
+          label(for='body') Body
+          textarea(id='body' type='body' name='body')
+        div.add
+          button(type='submit' name='add') Add Article   
