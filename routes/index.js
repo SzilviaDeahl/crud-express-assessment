@@ -16,6 +16,10 @@ router.get('/articles/new', function (req, res, next) {
   res.render('new')
 });
 
+router.post('/articles/new', function (req, res, next) {
+  res.redirect('/show')
+})
+
 router.get('/articles/edit', function (req, res, next) {
   // users.findOne({_id: })
   res.render('edit')
@@ -25,7 +29,7 @@ router.post('/articles/:id', function (req, res, next) {
   res.redirect('/show')
 });
 
-router.get('articles/show', function (req, res, next) {
+router.get('/articles/show', function (req, res, next) {
   res.render('show')
 });
 

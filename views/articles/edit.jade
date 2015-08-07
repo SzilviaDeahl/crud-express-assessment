@@ -1,0 +1,25 @@
+extends ../layout
+
+block content
+  div.header
+    h1
+      a.zine(href='/') The Zine
+    div.new
+      form(action='/articles' method='POST')  
+        div.title
+          label(for='new') Title
+          input(id='new' type='text' name='title' value=req.body.title)
+        div.url
+          label(for='url') Background URL 
+          input(id='url' type='url' name='url' value=req.body.url)
+        div.backgroundImage
+          input(id='img' type='checkbox' name='img' checked = req.body.img === 'on')
+          label(for='img') Background Image Includes Dark Colors
+        div.excerpt
+          label(for='excerpt') Excerpt
+          textarea(id='excerpt' type='text' name='excerpt' content=req.body.excerpt)
+        div.body
+          label(for='body') Body
+          textarea(id='body' type='body' name='body' content=req.body.body)
+        div.add
+          button(type='submit' name='add') Add Article 
